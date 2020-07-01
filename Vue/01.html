@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Vue基础</title>
+	</head>
+	<body>
+		<!--
+		 1.导入开发版的vuejs包
+		 2、创建Vue实例对象，设置el属性和data属性
+		 3、使用简洁的模板语法把数据渲染在页面上
+		 
+		 Vue的实例范围：VUE会管理el选项命中的元素及其的后代元素
+		 可以使用其他的选择器，但是建议使用ID选择器，因为ID在页面中是唯一，类或者标签不是唯一的
+		 可以使用其他的双标签，不能使用HTML和BODY
+		 -->
+		<div id="app">
+		{{massage}}
+		</div>
+		<!--{{}}是把数据跟结构结合起来，也叫插值表达式-->
+		<!-- 开发环境版本，包含了有帮助的命令行警告 -->
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+		<script>
+			var app = new Vue({
+				el:"#app",
+				data:{
+					massage:"你好 Vue!"
+				}
+			})
+			
+		
+		</script>
+	</body>
+</html>
