@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			.active{
+				border:1px solid red;
+			}
+		</style>
+	</head>
+	<body>
+		<!--v-bind指令的作用是为元素绑定属性
+		完整写法v-bind:属性名
+		简写的话可以直接省略v-bind，只保留:属性名-->
+		<div id="app">
+		<img v-bind:src="imgSrc" alt="">
+		<br>
+		<img :src="imgSrc" alt="" :title="imgTitle" :class="isActive?'active':''" @click="toggleActive">
+		</div>
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+		<script>
+			var app =new Vue({
+				el:"#app",
+				data:{
+					imgSrc:"https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1593959443&di=877721c219784f0b9846becfbd8633b2&src=http://a3.att.hudong.com/14/75/01300000164186121366756803686.jpg",
+					imgTitle:"图片",
+					isActive:false
+				},
+				<!--函数会漏掉function -->
+				methods:{
+					toggleActive:function(){
+						this.isActive=!this.isActive
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<!--v-show指令的作用是：根据真假切换元素的显示状态
+		原理是修改元素的display，实现显示隐藏，频繁切换使用v-show
+		
+		v-if操纵的dom元素来切换显示状态，元素为false会从dom中移除，切换消耗性能比较大
+		v-if也支持用表达式-->
+		<div id="app">
+			<input type="button" value="切换显示"@click="changeTag" />
+			<p v-show="isShow">黑马程序员</p>
+			<p v-if ="isShow">黑马程序员</p>
+			<h2 v-if="age>=18">成年啦</h2>
+		</div>
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+		<script>
+			var app = new Vue({
+				el:"#app",
+				data:{
+					isShow:false,
+					age:17
+				},
+				methods:{
+					changeTag:function(){
+						this.isShow=!this.isShow;
+					}
+					
+				}
+			})
+		</script>
+	</body>
+</html>
