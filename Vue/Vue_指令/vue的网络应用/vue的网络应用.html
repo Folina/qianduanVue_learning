@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="button" value="get请求" class="get"/>
+		<input type="button" value="post请求" class="post"/>
+		<!--
+		网络应用：Vue结合网络数据开发应用
+		axios网络请求库
+		axios+vue结合Vue一起
+		应用天气预报案例来巩固所学知识
+		-->
+		<!--官网提供的axios在线地址-->
+		<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+		<script>
+			document.querySelector(".get").onclick=function(){
+				axios.get("https://autumnfish.cn/api/joke/list?num=1")
+				.then(function(response){
+					console.log(response);
+				},function(err){
+					console.log(err);
+				})
+			}
+			
+			document.querySelector(".post").onclick=function(){
+				axios.post("https://autumnfish.cn/api/user/reg",{username:"xiaocc"})
+				.then(function(response){
+					console.log(response);
+				},function(err){
+					console.log(err);
+				})
+			}
+		</script>
+		
+	</body>
+</html>

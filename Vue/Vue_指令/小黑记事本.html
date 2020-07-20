@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			.todo-list li labe{
+				word-break: break-all;
+				padding: 15px 15px 15px 60px;
+				display: block;
+				line-height: 1.2;
+				transition: color 0.4s;
+			}
+			.destroy{
+				display: none;
+				position: absolute;
+				top:0;
+				right: 10px;
+				bottom:0;
+				width: 40px;
+				height: 40px;
+				margin: autp 0;
+				
+			}
+		</style>
+	</head>
+	<body>
+		<!--
+		1、生成列表结构 v-for
+		2、获取用户输入 v-model，可以双向绑定
+		3、回车新增数据 v-on .enter 事件修饰符，.enter回车触发函数
+		4、统计列表格式，list.length
+		5、清空列表，方法就是把列表置空， this.list=[];
+		    clear:function(){
+				this.list=[];
+			}
+		6、统计按钮、清空按钮，假如列表为空就不显示，判断列表不为空 list.length!=0
+		v-show="list.length!=0"
+		-->
+		<!--主体区-->
+		<section id="todoapp">
+			
+			<header></header>
+			<h1>小黑记事本</h1>
+			
+			<!--输入框
+			v-on可以缩写成@-->
+			
+			<input v-model="inputValue" @keyup.enter="add" autofocus="autofocus" onlayoutcomplete="off" placeholder="请输入任务" />
+			<button  @click="remove(index)">删除</button>
+			<!--列表区域-->
+			<section class="main">
+				<ul class="todo-list">
+					<li class="todo" v-for="(item,index) in list">
+						<div class="view">
+							<span class="index">{{ index+1 }} .</span>
+							<label>{{ item }}</label>
+							<button class="destroy"></button>
+						</div>
+					</li>
+				</ul>
+			</section>
+		</section>
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<script>
+		var app = new Vue({
+			el:"#todoapp",
+			data:{
+				list:["写代码","看电影","读书"],
+				inputValue:"好好学习，天天向上"
+			},
+			methods:{
+				add:function(){
+					//往数组里面加数据
+					this.list.push(this.inputValue);
+				},
+				remove:function(index){
+					// this.list.shift();
+					console.log("删除");
+					this.list.splice(index,1);//index表示点击谁就删除谁，1表示删除1个
+					
+				}
+			}
+		})
+	</script>
+	</body>
+</html>
